@@ -29,7 +29,11 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        NSString *completed = @"False";
+        if(self.detailItem.completed){
+            completed = @"True";
+        }
+        self.detailDescriptionLabel.text = [NSString stringWithFormat:@"Title: %@\nDescription: %@\nPriority: %d\nCompleted: %@", self.detailItem.title, self.detailItem.todoDescription, self.detailItem.todoPriority, completed];
     }
 }
 
